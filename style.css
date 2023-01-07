@@ -1,5 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap');
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+body{
+    background-color: #BA4949;
+    font-family: 'Arvo', serif;
+    color: #efe;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid #A74242;
+}
+
+.header h1{
+    max-width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .3rem;
+    font-size: 26px;
+}
+
+.header .header-links{
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.header .header-icons{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #C86D6D;
+    border: none;
+    border-radius: 4px;
+    color: #efe;
+    padding: 8px 12px;
+    gap: 8px;
 }
