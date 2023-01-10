@@ -35,10 +35,11 @@
         <div class="container-pomodoro">
             <div class="timer-container">
                 <div class="timer">
-                    <button class="option">Pomodoro</button>
-                    <button class="option">Short Break</button>
-                    <button class="option">Long Break</button>
-
+                    <div class="timer-options">
+                        <button class="option">Pomodoro</button>
+                        <button class="option">Short Break</button>
+                        <button class="option">Long Break</button>
+                    </div>
                     <div id="counter">
                         <span>25:00</span>
                         <!--Aqui vai ser JS-->
@@ -53,6 +54,8 @@
                 </div>
 
                 <div class="task-title">
+                    <span id="task-number">#1</span>
+                    <span id="task-title">TITLE</span>
                     <!--
                         Vai ter o id da tarefa e o título.
                         Quando n tiver tarefa, o id é #1 e o título "Time to Focus!"
@@ -61,7 +64,7 @@
             </div>
 
             <div class="tasks-container">
-                <span>Tasks</span>
+                <span id="span-bottom">Tasks</span>
                 <div class="tasks">
                     <!--Aqui vai as tasks que serão criadas com JS-->
                     <button id="add-task">

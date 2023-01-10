@@ -11,9 +11,13 @@ body{
     color: #efe;
 }
 
+button{
+    cursor: pointer;
+}
+
 .container{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,6 +34,7 @@ a{
     justify-content: space-between;
     padding: 16px 0;
     border-bottom: 1px solid #A74242;
+    margin-bottom: 26px;
 }
 
 .header h1{
@@ -58,4 +63,117 @@ a{
     color: #efe;
     padding: 8px 12px;
     gap: 8px;
+}
+
+.container-pomodoro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.timer-container{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.timer-container .timer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    text-align: center;
+    background-color: #C15C5C;
+    padding: 20px 0px 30px;
+}
+
+.timer-container .timer-options button{
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #C15C5C;
+    color: #efe;
+    padding: 2px 12px;
+}
+
+.timer-container #counter{
+    font-size: 120px;
+}
+
+.action-buttons button{
+    margin: 20px 0 0;
+    padding: 0px 12px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: #ddd 0 6px 0;
+    font-size: 22px;
+    font-weight: bold;
+    height: 55px;
+    color: #BA4949;
+    width: 200px;
+    background-color: #fff;
+    transition: color 0.5s ease-in-out 0s;
+}
+
+.timer-container .task-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.timer-container .task-title #task-number{
+    opacity: 0.6;
+    font-size: 16px;
+}
+
+.timer-container .task-title #task-title{
+    padding-top: 10px;
+    font-size: 18px;
+}
+
+.tasks-container{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.tasks-container .tasks{   
+    display: flex;
+    align-items: center;
+}
+
+.tasks-container #span-bottom{
+    padding-bottom: 14px; 
+    border-bottom: 2px solid #ffffffdd;
+    margin-bottom: 12px;
+}
+
+.tasks-container .tasks button{
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    color: #efe;
+    height: 64px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    margin-top: 12px;
+    border: 2px dashed rgba(255, 255, 255, 0.4);
+    gap: 8px;
+}
+
+.create-task{
+    display: flex;
+    width: 100%;
+    background-color: #fff;
+}
+
+.create-task form{
+    display: flex;
+    flex-direction: column;
 }
