@@ -36,17 +36,20 @@
             <div class="timer-container">
                 <div class="timer">
                     <div class="timer-options">
-                        <button class="option">Pomodoro</button>
-                        <button class="option">Short Break</button>
-                        <button class="option">Long Break</button>
+                        <button id="pomo" class="option-active">Pomodoro</button>
+                        <button id="short-break">Short Break</button>
+                        <button id="long-break">Long Break</button>
                     </div>
                     <div id="counter">
-                        <span>25:00</span>
+                        <!--<span id="time-left">25:00</span>-->
+                        <span id="minutes">25</span>
+                        <span>:</span>
+                        <span id="seconds">00</span>
                         <!--Aqui vai ser JS-->
                     </div>
 
                     <div class="action-buttons">
-                        <button class="start">START</button>
+                        <button class="start" onclick="pomoStart()">START</button>
                         <!--
                             Aqui vai 2 botões, 1 de reset e outro de pause
                         -->
@@ -67,7 +70,7 @@
                 <span id="span-bottom">Tasks</span>
                 <div class="tasks">
                     <!--Aqui vai as tasks que serão criadas com JS-->
-
+                    <!--Isso aqui é criado com JS-->
                     <div class="created-task">
                         <div class="created-task-title-container">
                             <div class="flex-title">
@@ -85,7 +88,7 @@
                             <span id="created-task-description">Description of the task</span>
                         </div>
                     </div>
-
+                    <!---->
 
                     <button id="add-task">
                         <!--

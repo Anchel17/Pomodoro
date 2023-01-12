@@ -97,8 +97,14 @@ a{
     padding: 2px 12px;
 }
 
+.option-active{
+    background-color: #A44E4E!important;
+}
+
 .timer-container #counter{
     font-size: 120px;
+    display: flex;
+    justify-content: center;
 }
 
 .action-buttons button{
@@ -114,6 +120,11 @@ a{
     width: 200px;
     background-color: #fff;
     transition: color 0.5s ease-in-out 0s;
+}
+
+.active{
+    box-shadow: none!important;
+    transform: translateY(6px);
 }
 
 .timer-container .task-title{
@@ -172,13 +183,8 @@ a{
     flex-direction: column;
 }
 
-/*Tirar dps
-.tasks-container .tasks #add-task{
-    display: none;
-}
-*/
 .create-task{
-    display: flex;
+    display: none;
     width: 100%;
     background-color: #FFFFFF;
     margin-bottom: 40px;
