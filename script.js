@@ -74,7 +74,15 @@ function pomoStart(){
 }
 
 function method(option){
+    pomoPause();
     if(option.innerText === "Pomodoro"){
+        workMinutes = workTime;
+        seconds = 0;
+        min.innerText = + workMinutes;
+        sec.innerText = "0" + seconds;
+        workMinutes--;
+        seconds = 59;
+
         pomodoroBtn.classList.add("option-active");
         shortBtn.classList.remove("option-active");
         longBtn.classList.remove("option-active");
@@ -98,6 +106,13 @@ function method(option){
         body.style.transition = "0.4s";
     }
     else if(option.innerText === "Short Break"){
+        workMinutes = shortBreak;
+        seconds = 0;
+        min.innerText = "0" + workMinutes;
+        sec.innerText = "0" + seconds;
+        workMinutes--;
+        seconds = 59;
+
         pomodoroBtn.classList.remove("option-active");
         shortBtn.classList.add("option-active");
         longBtn.classList.remove("option-active");
@@ -120,6 +135,13 @@ function method(option){
         body.style.transition = "0.4s";
     }
     else if(option.innerText === "Long Break"){
+        workMinutes = longBreak;
+        seconds = 0;
+        min.innerText = + workMinutes;
+        sec.innerText = "0" + seconds;
+        workMinutes--;
+        seconds = 59;
+
         pomodoroBtn.classList.remove("option-active");
         shortBtn.classList.remove("option-active");
         longBtn.classList.add("option-active");
@@ -141,5 +163,4 @@ function method(option){
         body.style.backgroundColor = "#397097";
         body.style.transition = "0.5s";
     }
-
 }
