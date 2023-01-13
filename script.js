@@ -5,6 +5,13 @@ const longBtn = document.querySelector("#long-break");
 const body = document.querySelector("body");
 const header = document.querySelector(".header")
 const timer = document.querySelector(".timer");
+
+const taskCreate = document.querySelector(".create-task");
+const taskList = document.querySelector(".tasks");
+const saveTaskBtn = document.querySelector("#save");
+const taskTitle = document.querySelector("#task-title");
+const taskDescription = document.querySelector("#task-description");
+
 const headerIcons = document.querySelectorAll(".header-icons");
 
 //let counter = document.querySelector("#time-left");
@@ -21,6 +28,48 @@ let seconds = 59;
 let workMinutes = workTime - 1;
 let shortBreakMinutes = shortBreak;
 let longBreakMinutes = longBreak;
+
+let tasks;
+let id;
+
+const getTasks = () => JSON.parse(localStorage.getItem('dbfunc')) ?? []
+const setTasks = () => localStorage.setItem('dbfunc', JSON.stringify(tasks));
+
+function loadTasks(){
+    tasks = getTasks();
+    taskList.innerHTML = '';
+    
+    tasks.forEach((task, index) =>{
+        insertTask(task, index);
+    });
+}
+
+loadTasks();
+
+function insertTask(task, index){
+    let taskDiv = document.createElement("div");
+    taskDiv.classList.add("created-task");
+    
+    taskDiv.innerHTML = `
+        <div class="created-task-title-container">
+        <div class="flex-title">
+            <button class="check-task">
+                <img src="./icons/bx-check-circle.svg" alt="Check Task">
+            </button>
+
+            <span class="task-created-title">${task.title}</span>
+        </div>
+        <button class="edit-task">
+            <img src="./icons/bx-edit.svg" alt="Edit task">
+        </button>
+        </div>
+        <div class="created-task-description-container">
+            <span id="created-task-description">${task.description}</span>
+        </div>
+    `
+
+    taskList.appendChild(taskDiv);
+}
 
 function pomoPause(){
     actionBtn.innerText = "START";
@@ -163,4 +212,31 @@ function method(option){
         body.style.backgroundColor = "#397097";
         body.style.transition = "0.5s";
     }
+}
+
+saveTaskBtn.onclick = e => {
+    alert(taskTitle.value);
+    taskTitle.value = taskTitle.value.trim();
+    taskDescription.value = taskDescription.value.trim();
+
+    if(taskTitle.value == ''){
+        return;
+    }
+
+    e.preventDefault();
+
+    if(id != undefined){
+        tasks[id].title = taskTitle.value;
+        tasks[id].description = taskDescription.value;
+    }
+    else{
+        tasks.push({'title': taskTitle.value, 'description': taskDescription.value});
+    }
+
+    setTasks();
+
+    taskCreate.style.setProperty("display", "none");
+
+    loadTasks();
+    id = undefined;
 }

@@ -130,19 +130,19 @@ a{
     transform: translateY(6px);
 }
 
-.timer-container .task-title{
+.timer-container .current-task{
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px 0;
 }
 
-.timer-container .task-title #task-number{
+.timer-container .current-task #current-task-number{
     opacity: 0.6;
     font-size: 16px;
 }
 
-.timer-container .task-title #task-title{
+.timer-container .current-task #current-task-title{
     padding-top: 10px;
     font-size: 18px;
 }
@@ -164,7 +164,7 @@ a{
     margin-bottom: 12px;
 }
 
-.tasks-container .tasks #add-task{
+.tasks-container #add-task{
     width: 100%;
     font-size: 16px;
     font-weight: bold;
@@ -409,11 +409,11 @@ a{
         width: 120px;
     }
 
-    .timer-container .task-title #task-number{
+    .timer-container .current-task #current-task-number{
         font-size: 13px;
     }
     
-    .timer-container .task-title #task-title{
+    .timer-container .current-task #current-task-title{
         font-size: 15px;
     }
 }
