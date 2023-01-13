@@ -2,29 +2,36 @@ const actionBtn = document.querySelector(".start");
 //let counter = document.querySelector("#time-left");
 let min = document.querySelector("#minutes");
 let sec = document.querySelector("#seconds");
+let intervalo;
 
 let workTime = 25;
 let shortBreak = 5;
 let longBreak = 15;
-let seconds = "00";
+//let seconds = "00";
+let seconds = 59;
+
+let workMinutes = workTime - 1;
+let shortBreakMinutes = shortBreak;
+let longBreakMinutes = longBreak;
 
 function pomoPause(){
-    actionBtn.innerText = "PAUSE";
+    actionBtn.innerText = "START";
     actionBtn.classList.remove('active');
     actionBtn.setAttribute("onclick", "pomoStart()");
+    clearTimeout(intervalo);
 }
 
 function pomoStart(){
-    actionBtn.innerText = "START";
+    actionBtn.innerText = "PAUSE";
     actionBtn.classList.add('active');
     actionBtn.setAttribute("onclick", "pomoPause()");
 
+    //seconds = 59;
 
-    seconds = 59;
-
-    let workMinutes = workTime - 1;
-    let shortBreakMinutes = shortBreak - 1;
-    let longBreakMinutes = longBreak - 1;
+    //workMinutes--;
+    //workMinutes = workTime - 1;
+    //shortBreakMinutes = shortBreak - 1;
+    //longBreakMinutes = longBreak - 1;
 
     //decrementar tempo
     let timerFunction = () =>{
@@ -44,7 +51,7 @@ function pomoStart(){
 
         seconds--;
 
-        if(seconds == 0){
+        if(seconds == -1){
             workMinutes--;
             if(workMinutes == -1){
                 min.innerText = '0' + 0;
@@ -54,5 +61,6 @@ function pomoStart(){
             seconds = 59;
         }
     }
-    let intervalo = setInterval(timerFunction, 1000);
+
+    intervalo = setInterval(timerFunction, 1000);
 }
