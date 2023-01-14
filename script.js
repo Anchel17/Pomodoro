@@ -103,7 +103,7 @@ function excludeTask(index){
         alert("Por favor, termine a edição da tarefa");
         return;
     }
-
+    
     tasks.splice(index, 1);
 
     setTasks();
