@@ -6,9 +6,11 @@ const body = document.querySelector("body");
 const header = document.querySelector(".header")
 const timer = document.querySelector(".timer");
 
+const addTaskBtn = document.querySelector("#add-task");
 const taskCreate = document.querySelector(".create-task");
 const taskList = document.querySelector(".tasks");
 const saveTaskBtn = document.querySelector("#save");
+const cancelTaskCreationBtn = document.querySelector("#cancel");
 const taskTitle = document.querySelector("#task-title");
 const taskDescription = document.querySelector("#task-description");
 
@@ -62,13 +64,28 @@ function insertTask(task, index){
         <button class="edit-task">
             <img src="./icons/bx-edit.svg" alt="Edit task">
         </button>
-        </div>
-        <div class="created-task-description-container">
-            <span id="created-task-description">${task.description}</span>
+        <button class="exclude-task" onclick="excludeTask(${index})">
+            <img src="./icons/bx-trash.svg" alt="Exclude task">
+        </button>
         </div>
     `
 
+    if(task.description != ''){
+        taskDiv.innerHTML += `
+        <div class="created-task-description-container">
+            <span id="created-task-description">${task.description}</span>
+        </div>
+        `
+    }
+
     taskList.appendChild(taskDiv);
+}
+
+function excludeTask(index){
+    tasks.splice(index, 1);
+
+    setTasks();
+    loadTasks();
 }
 
 function pomoPause(){
@@ -214,8 +231,19 @@ function method(option){
     }
 }
 
+function openForm(){
+    taskCreate.style.setProperty("display", "flex");
+    addTaskBtn.style.setProperty("display", "none");
+    taskTitle.value = '';
+    taskDescription.value = '';
+}
+
+cancelTaskCreationBtn.onclick = e =>{
+    taskCreate.style.setProperty("display", "none");
+    addTaskBtn.style.setProperty("display", "flex");
+}
+
 saveTaskBtn.onclick = e => {
-    alert(taskTitle.value);
     taskTitle.value = taskTitle.value.trim();
     taskDescription.value = taskDescription.value.trim();
 
@@ -236,6 +264,7 @@ saveTaskBtn.onclick = e => {
     setTasks();
 
     taskCreate.style.setProperty("display", "none");
+    addTaskBtn.style.setProperty("display", "flex");
 
     loadTasks();
     id = undefined;
