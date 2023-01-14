@@ -90,7 +90,8 @@ function excludeTask(index){
 
 function editTask(index){
     openForm();
-
+    window.scrollTo(0, document.body.scrollHeight);
+    
     taskTitle.value = tasks[index].title;
     taskDescription.value = tasks[index].description;
     id = index;
