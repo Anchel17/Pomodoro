@@ -61,7 +61,7 @@ function insertTask(task, index){
 
             <span class="task-created-title">${task.title}</span>
         </div>
-        <button class="edit-task">
+        <button class="edit-task" onclick="editTask(${index})">
             <img src="./icons/bx-edit.svg" alt="Edit task">
         </button>
         <button class="exclude-task" onclick="excludeTask(${index})">
@@ -86,6 +86,14 @@ function excludeTask(index){
 
     setTasks();
     loadTasks();
+}
+
+function editTask(index){
+    openForm();
+
+    taskTitle.value = tasks[index].title;
+    taskDescription.value = tasks[index].description;
+    id = index;
 }
 
 function pomoPause(){
