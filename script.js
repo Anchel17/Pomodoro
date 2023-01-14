@@ -5,6 +5,8 @@ const longBtn = document.querySelector("#long-break");
 const body = document.querySelector("body");
 const header = document.querySelector(".header")
 const timer = document.querySelector(".timer");
+let btnPressedSound = new Audio("./sounds/click.mp3");
+
 
 const addTaskBtn = document.querySelector("#add-task");
 const taskCreate = document.querySelector(".create-task");
@@ -140,6 +142,8 @@ function pomoPause(){
 }
 
 function pomoStart(){
+    btnPressedSound.play();
+
     actionBtn.innerText = "PAUSE";
     actionBtn.classList.add('active');
     actionBtn.setAttribute("onclick", "pomoPause()");
@@ -167,12 +171,34 @@ function pomoStart(){
                 min.innerText = '0' + 0;
                 sec.innerText = '0' + 0;
                 clearTimeout(intervalo);
+
+                if(pomodoroBtn.classList.contains("option-active")){
+                    alarm("Pomodoro");
+                }
+                else if(shortBtn.classList.contains("option-active")){
+                    alarm("Break");
+                }
+                else if(longBtn.classList.contains("option-active")){
+                    alarm("Break");
+                }
             }
             seconds = 59;
         }
     }
 
     intervalo = setInterval(timerFunction, 1000);
+}
+
+function alarm(opt){
+    let audio;
+    if(opt == "Pomodoro"){
+        audio = new Audio("./sounds/beep_alarm.mp3");
+    }
+    else if(opt === "Break"){
+        audio = new Audio("./sounds/alarm.mp3");
+    }
+
+    audio.play();
 }
 
 function method(option){
