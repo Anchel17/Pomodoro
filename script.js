@@ -99,6 +99,11 @@ function insertTask(task, index){
 }
 
 function excludeTask(index){
+    if(taskCreate.style.display != "none"){
+        alert("Por favor, termine a edição da tarefa");
+        return;
+    }
+    
     tasks.splice(index, 1);
 
     setTasks();

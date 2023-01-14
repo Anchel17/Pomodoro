@@ -328,7 +328,6 @@ a{
     border-radius: 4px;
 }
 
-/*Responsividade*/
 @media (max-width: 1024px){
     .header{
         width: 70%;
