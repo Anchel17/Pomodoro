@@ -62,7 +62,7 @@ function insertTask(task, index){
     taskDiv.innerHTML = `
         <div class="created-task-title-container">
         <div class="flex-title">
-            <button class="check-task">
+            <button class="check-task" onclick="completeTask(${index})">
                 <img src="./icons/bx-check-circle.svg" alt="Check Task">
             </button>
 
@@ -89,6 +89,10 @@ function insertTask(task, index){
         taskDiv.classList.add("created-task-active");
     }
 
+    if(task.completed === true){
+        taskDiv.classList.add("created-task-completed");
+    }
+
     taskList.appendChild(taskDiv);
 }
 
@@ -106,6 +110,10 @@ function editTask(index){
     taskTitle.value = tasks[index].title;
     taskDescription.value = tasks[index].description;
     id = index;
+}
+
+function completeTask(index){
+    tasks[index].completed = !tasks[index].completed;
 }
 
 function setTaskActive(index){
@@ -287,10 +295,10 @@ saveTaskBtn.onclick = e => {
     }
     else{
         if(tasks.length != 0){
-            tasks.push({'title': taskTitle.value, 'description': taskDescription.value, 'active': false})
+            tasks.push({'title': taskTitle.value, 'description': taskDescription.value, 'active': false, 'completed': false})
         }
         else{
-            tasks.push({'title': taskTitle.value, 'description': taskDescription.value, 'active': true});
+            tasks.push({'title': taskTitle.value, 'description': taskDescription.value, 'active': true, 'completed': false});
             currentTaskId.innerText = "#1";
             currentTaskTitle.innerText = taskTitle.value;
         }

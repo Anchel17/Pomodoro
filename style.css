@@ -177,6 +177,7 @@ a{
     justify-content: center;
     opacity: 0.8;
     margin-top: 12px;
+    margin-bottom: 12px;
     border: 2px dashed rgba(255, 255, 255, 0.4);
     gap: 8px;
 }
@@ -266,6 +267,10 @@ a{
     padding: 10px 15px;
     margin-bottom: 12px;
     border-radius: 6px;
+    -webkit-transition: background-color 2s ease-out;
+    -moz-transition: background-color 2s ease-out;
+    -o-transition: background-color 2s ease-out;
+    transition: background-color 2s ease-out;
 }
 
 .created-task:hover{
@@ -274,6 +279,21 @@ a{
 
 .created-task-active{
     border-left: 6px solid #222222!important;
+}
+
+.created-task-completed,
+.created-task-completed img,
+.created-task-completed button{
+    background-color: #9DFF89!important;
+}
+
+.created-task-completed .task-created-title{
+    text-decoration: line-through;
+    color: #AAA;
+}
+
+.created-task-completed .created-task-description-container{
+    background-color: #90F090!important;
 }
 
 .created-task button{
@@ -305,6 +325,7 @@ a{
     background-color: #FCF8DE;
     padding: 10px 12px;
     font-size: 12px;
+    border-radius: 4px;
 }
 
 /*Responsividade*/
