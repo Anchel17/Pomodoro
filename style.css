@@ -255,6 +255,7 @@ a{
 }
 
 .created-task{
+    cursor: pointer;
     width: 100%;
     display: flex;
     color: #000;
@@ -264,7 +265,15 @@ a{
     justify-content: space-between;
     padding: 10px 15px;
     margin-bottom: 12px;
-    border-left: 6px solid #222222;
+    border-radius: 6px;
+}
+
+.created-task:hover{
+    border-left: 6px solid #CCCCCC;
+}
+
+.created-task-active{
+    border-left: 6px solid #222222!important;
 }
 
 .created-task button{

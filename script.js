@@ -14,9 +14,11 @@ const cancelTaskCreationBtn = document.querySelector("#cancel");
 const taskTitle = document.querySelector("#task-title");
 const taskDescription = document.querySelector("#task-description");
 
+const currentTaskId = document.querySelector("#current-task-number");
+const currentTaskTitle = document.querySelector("#current-task-title");
+
 const headerIcons = document.querySelectorAll(".header-icons");
 
-//let counter = document.querySelector("#time-left");
 let min = document.querySelector("#minutes");
 let sec = document.querySelector("#seconds");
 let intervalo;
@@ -24,7 +26,6 @@ let intervalo;
 let workTime = 25;
 let shortBreak = 5;
 let longBreak = 15;
-//let seconds = "00";
 let seconds = 59;
 
 let workMinutes = workTime - 1;
@@ -44,6 +45,11 @@ function loadTasks(){
     tasks.forEach((task, index) =>{
         insertTask(task, index);
     });
+
+    if(tasks.length == 0){
+        currentTaskId.innerText = "#0";
+        currentTaskTitle.innerText = "Time to Focus!";
+    }
 }
 
 loadTasks();
@@ -51,6 +57,7 @@ loadTasks();
 function insertTask(task, index){
     let taskDiv = document.createElement("div");
     taskDiv.classList.add("created-task");
+    taskDiv.setAttribute("onclick", `setTaskActive(${index})`);
     
     taskDiv.innerHTML = `
         <div class="created-task-title-container">
@@ -78,6 +85,10 @@ function insertTask(task, index){
         `
     }
 
+    if(task.active === true){
+        taskDiv.classList.add("created-task-active");
+    }
+
     taskList.appendChild(taskDiv);
 }
 
@@ -91,10 +102,26 @@ function excludeTask(index){
 function editTask(index){
     openForm();
     window.scrollTo(0, document.body.scrollHeight);
-    
+
     taskTitle.value = tasks[index].title;
     taskDescription.value = tasks[index].description;
     id = index;
+}
+
+function setTaskActive(index){
+    for(let i = 0; i < tasks.length; i++){
+        if(tasks[i].active){
+            tasks[i].active = false;
+            break;
+        }
+    }
+
+    tasks[index].active = true;
+    currentTaskId.innerText = "#" + parseInt(index+1);
+    currentTaskTitle.innerText = tasks[index].title;
+
+    setTasks();
+    loadTasks();
 }
 
 function pomoPause(){
@@ -109,14 +136,6 @@ function pomoStart(){
     actionBtn.classList.add('active');
     actionBtn.setAttribute("onclick", "pomoPause()");
 
-    //seconds = 59;
-
-    //workMinutes--;
-    //workMinutes = workTime - 1;
-    //shortBreakMinutes = shortBreak - 1;
-    //longBreakMinutes = longBreak - 1;
-
-    //decrementar tempo
     let timerFunction = () =>{
         if(workMinutes < 10){
             min.innerText = '0' + workMinutes;
@@ -267,7 +286,14 @@ saveTaskBtn.onclick = e => {
         tasks[id].description = taskDescription.value;
     }
     else{
-        tasks.push({'title': taskTitle.value, 'description': taskDescription.value});
+        if(tasks.length != 0){
+            tasks.push({'title': taskTitle.value, 'description': taskDescription.value, 'active': false})
+        }
+        else{
+            tasks.push({'title': taskTitle.value, 'description': taskDescription.value, 'active': true});
+            currentTaskId.innerText = "#1";
+            currentTaskTitle.innerText = taskTitle.value;
+        }
     }
 
     setTasks();
